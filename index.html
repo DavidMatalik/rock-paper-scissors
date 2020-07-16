@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Rock Paper Scissors</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <script>
+
+        //Let computer return either Rock, Paper or Scissors
+        function computerPlay (){
+
+            let randomNum = randomNumber(0, 2);
+
+            return  (randomNum === 0) ? "Rock" :
+                    (randomNum === 1) ? "Paper" :
+                                        "Scissors";
+        }
+
+        function randomNumber(minNumber, maxNumber){
+
+            let randomDecimal = Math.random() * (maxNumber - minNumber + 1) + minNumber
+            let randomInteger = Math.floor(randomDecimal)
+            return randomInteger;
+
+        }
+
+        function playRound (playerSelection, computerSelection) {
+
+            if (playerSelection ==="Rock") {
+
+                return  (computerSelection === "Paper") ? 
+                            looseMessage (playerSelection, computerSelection) :
+                        (computerSelection === "Scissors") ?
+                            winMessage (playerSelection, computerSelection) :
+                            equalMessage ();
+
+            }else if (playerSelection === "Paper") {
+
+                return  (computerSelection === "Rock") ? 
+                            winMessage (playerSelection, computerSelection) :
+                        (computerSelection === "Scissors") ?
+                            looseMessage (playerSelection, computerSelection) :
+                            equalMessage ();
+
+            } else if (playerSelection === "Scissors") {
+
+                return  (computerSelection === "Rock") ? 
+                            looseMessage (playerSelection, computerSelection) :
+                        (computerSelection === "Paper") ?
+                            winMessage (playerSelection, computerSelection) :
+                            equalMessage ();
+            } 
+        }
+
+        function winMessage (playerSelection, computerSelection){
+
+            return `You win! ${playerSelection} beats ${computerSelection}`;
+
+        }
+
+        function looseMessage (playerSelection, computerSelection){
+
+            return `You loose! ${computerSelection} beats ${playerSelection}`;  
+
+        }
+
+        function equalMessage () {
+
+            return "You Picked the same. Nothing happens...";
+
+        }
+        
+        const playerSelection = 'Rock';
+        const computerSelection = computerPlay();
+        console.log(playRound(playerSelection, computerSelection));
+
+    </script>
+</body>
+
+</html>
