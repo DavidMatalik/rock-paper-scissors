@@ -33,16 +33,28 @@ h2 {
     font-size: 40px;
 }
 
-#rock, #rockComputer{
+#rock{
     background-color: green;
 }
 
-#paper, #paperComputer{
+#paper{
     background-color: yellow;
 }
 
-#scissors, #scissorsComputer{
+#scissors{
     background-color: blue;
+}
+
+#rockComputer{
+    background-color: rgba(144, 238, 144, 0.3);
+}
+
+#paperComputer{
+    background-color: rgba(255, 255, 0, 0.3);
+}
+
+#scissorsComputer{
+    background-color: rgba(62, 62, 255, 0.3);
 }
 
 #containerComputer > div{
