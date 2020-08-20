@@ -1,0 +1,55 @@
+:root {
+    --height-width-choices: 150px;
+}
+
+body{
+    text-align: center;
+}
+
+h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+h2 {   
+    font-size: 40px;
+}
+
+#results {
+    font-size: 50px;
+    color: purple;
+    margin-bottom: 20px;
+}
+
+#containerComputer, #containerPlayer {
+    display: flex;
+    padding: 50px;
+    justify-content: space-evenly;
+}
+
+#containerComputer > div, #containerPlayer > button {
+    width: var(--height-width-choices);
+    height: var(--height-width-choices);
+    font-size: 40px;
+}
+
+#rock, #rockComputer{
+    background-color: green;
+}
+
+#paper, #paperComputer{
+    background-color: yellow;
+}
+
+#scissors, #scissorsComputer{
+    background-color: blue;
+}
+
+#containerComputer > div{
+    line-height: var(--height-width-choices);
+}
+
+.choice {
+    border: 10px black solid;
+}
+

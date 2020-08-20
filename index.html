@@ -4,173 +4,35 @@
 <head>
     <meta charset="utf-8">
     <title>rock paper scissors</title>
-    <style>
 
-    </style>
+    <link rel="stylesheet" type="text/css" href="reset.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    
 </head>
 
 <body>
+    <h1>Play Rock Paper Scissors!</h1>
 
-    <button id="rock">rock</button>
-    <button id="paper">paper</button>
-    <button id="scissors">scissors</button>
+    <div id="results">Your Score: 0 / Computers Score: 0</div>
 
-    <div id="results">You: 0 / Computer: 0</div>
-    <div id="computersChoiceDisplay"></div>
+    <h2>Choose an item: </h2>
+    <div id="containerPlayer">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+
+    <h2>Computer's choice: </h2>
+    <div id="containerComputer">
+        <div id="rockComputer">Rock</div>
+        <div id="paperComputer">Paper</div>
+        <div id ="scissorsComputer">Scsissors</div>
+    </div>
+
     <div id="winnerDisplayContainer"></div>
 
+    <script type="text/javascript" src="script.js"></script>
 
-
-    <script>
-
-        const results = document.querySelector("#results");
-        const rockButton = document.querySelector("#rock");
-        const paperButton = document.querySelector("#paper");
-        const scissorsButton = document.querySelector("#scissors");
-        const computersChoiceDisplay = document.querySelector("#computersChoiceDisplay");
-        const winnerDisplayContainer = document.querySelector("#winnerDisplayContainer");
-
-        let computerSelection = "";
-        let scoreComputer = 0;
-        let scorePlayer = 0;
-        let round = 1;
-
-        rockButton.addEventListener("click", (currentEvent) => game(currentEvent));
-
-        paperButton.addEventListener("click", (currentEvent) => game(currentEvent));
-
-        scissorsButton.addEventListener("click", (currentEvent) => game(currentEvent));
-
-        //Play a game with so many round until Player or Computer has 5 Points
-        function game(buttonClicked){
-
-            let playerWon;
-            let playerSelection = buttonClicked.target.id;
-            computerSelection = computerPlay();
-
-            playerWon = playRound(playerSelection, computerSelection);
-
-            displayComputerSelection();
-
-            updateCurrentPoints(playerWon);
-
-            updateDisplayPoints();
-
-            if (checkWinnerAlready()) {
-
-                displayWinner();
-                resetPoints();
-                round += 1;
-
-            }
-        }
-
-        //Let computer return either rock, paper or scissors
-        function computerPlay () {
-
-            let randomNum = randomNumber(0, 2);
-
-            return  (randomNum === 0) ? "rock" :
-                    (randomNum === 1) ? "paper" :
-                                        "scissors";
-        }
-
-        //Return a random Integer number
-        function randomNumber (minNumber, maxNumber) {
-
-            let randomDecimal = Math.random() * (maxNumber - minNumber + 1) + minNumber
-            let randomInteger = Math.floor(randomDecimal)
-            return randomInteger;
-
-        }
-
-        //Determine winner - return true if Player has won, false if Computer has won and 0 if it is a draw
-        function playRound (playerSelection, computerSelection) {
-
-            let playerWon = true;
-
-            if (playerSelection ==="rock") {
-
-                return  (computerSelection === "paper") ? 
-                            playerWon = false :
-                        (computerSelection === "scissors") ?
-                            playerWon :
-                            0;
-
-            }else if (playerSelection === "paper") {
-
-                return  (computerSelection === "rock") ? 
-                            playerWon :
-                        (computerSelection === "scissors") ?
-                            playerWon = false :
-                            0;
-
-            } else if (playerSelection === "scissors") {
-
-                return  (computerSelection === "rock") ? 
-                            playerWon = false :
-                        (computerSelection === "paper") ?
-                            playerWon :
-                            0;
-            } 
-        }
-
-        function displayComputerSelection () {
-
-            computersChoiceDisplay.textContent = `Choice of Computer: ${computerSelection}`;
-            
-        }
-
-        function updateCurrentPoints (playerWon) {
-
-            if (playerWon){
-                scorePlayer += 1;
-            } else if (playerWon === false) {
-                scoreComputer += 1;
-            } 
-
-        }
-
-        function updateDisplayPoints () {
-
-            results.textContent = `You ${scorePlayer} / Computer: ${scoreComputer}`;
-
-        }
-
-        function checkWinnerAlready () {
-
-            return (scorePlayer === 5) ? true :
-                (scoreComputer === 5) ? true : false;
-
-        }
-
-        function displayWinner () {
-
-            let div = document.createElement('div');
-
-            if (scorePlayer === 5) {
-                
-                div.textContent = `${round}. Round: You won with ${scorePlayer} : ${scoreComputer} !!`;
-                
-            } 
-
-            if (scoreComputer === 5) {
-
-                div.textContent = `${round}. Round: You lost with ${scorePlayer} : ${scoreComputer} ...`;
-                
-            }
-
-            winnerDisplayContainer.appendChild(div);
-
-        }
-
-        function resetPoints () {
-            scoreComputer = 0;
-            scorePlayer = 0;
-            updateCurrentPoints();
-        }
-
-    </script>
 </body>
 
 </html>
