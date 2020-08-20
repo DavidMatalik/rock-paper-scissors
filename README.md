@@ -1,1 +1,1 @@
-Javascript logic of a Rock Paper Scissors game. This game goes over 5 rounds. A user plays against the computer. The HTML and CSS is built later.
+First build Javascript logic of a Rock Paper Scissors game. Then style it with CSS. This game is over until one player has 5 points. A user plays against the computer.
